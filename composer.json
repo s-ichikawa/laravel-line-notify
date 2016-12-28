@@ -1,0 +1,14 @@
+{
+    "name": "s-ichikawa/laravel-line-notify",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "s-ichikawa",
+            "email": "ichikawa.shingo.0829@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/notifications": "^5.3"
+    }
+}
