@@ -1,15 +1,32 @@
 <?php
-namespace Sichikawa\LaravelLineNotify;
+namespace NotificationChannels\LineNotify;
 
 use Illuminate\Notifications\Notification;
 
 class LineNotifyChannel
 {
+    /**
+     * @var LineNotify
+     */
+    private $lineNotify;
+
+    /**
+     * LineNotifyChannel constructor.
+     *
+     * @param LineNotify $lineNotify
+     */
+    public function __construct(LineNotify $lineNotify)
+    {
+
+        $this->lineNotify = $lineNotify;
+    }
 
     public function send($notifiable, Notification $notification)
     {
-        $message = $notification->toVoice($notifiable);
+        $message = $notification->toLineNotify($notifiable);
 
-        // 通知を$notifiableインスタンスへ送信する…
+        if (is_string($message)) {
+            $message = LineNotifyMessage::create($message);
+        }
     }
 }

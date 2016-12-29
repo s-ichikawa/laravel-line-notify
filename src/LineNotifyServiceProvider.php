@@ -1,5 +1,5 @@
 <?php
-namespace Sichikawa\LaravelLineNotify;
+namespace NotificationChannels\LineNotify;
 
 
 use Illuminate\Support\ServiceProvider;

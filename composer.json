@@ -9,6 +9,25 @@
         }
     ],
     "require": {
-        "illuminate/notifications": "^5.3"
+        "php": ">=5.6.4",
+        "illuminate/notifications": "^5.3",
+        "guzzlehttp/guzzle": "^6.2",
+        "illuminate/support": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "NotificationChannels\\LineNotify\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NotificationChannels\\LineNotify\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
     }
 }
