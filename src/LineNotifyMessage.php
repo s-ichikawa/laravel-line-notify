@@ -1,10 +1,15 @@
 <?php
 namespace NotificationChannels\LineNotify;
 
+use NotificationChannels\LineNotify\Exceptions\CouldNotCreateMessage;
+
 class LineNotifyMessage
 {
     /** @var string Notification Text. */
     public $text;
+
+    /** @var bool */
+    protected $hasText = false;
 
     /**
      * @param string $text
@@ -38,7 +43,7 @@ class LineNotifyMessage
      */
     public function text($text)
     {
-        if (mb_strlen($text) > 320) {
+        if (mb_strlen($text) > 1000) {
             throw CouldNotCreateMessage::textTooLong();
         }
         $this->text = $text;

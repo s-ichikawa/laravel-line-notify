@@ -1,13 +1,15 @@
 <?php
 namespace NotificationChannels\LineNotify\Exceptions;
 
-/**
- * Created by PhpStorm.
- * User: ichikawashingo
- * Date: 2016/12/30
- * Time: 1:23
- */
-class CouldNotCreateMessage
+class CouldNotCreateMessage extends \Exception
 {
+    public static function serviceRespondedWithAnError($response)
+    {
+        return new static("Descriptive error message.");
+    }
 
+    public static function textTooLong()
+    {
+        return new static("Message over max length.");
+    }
 }
