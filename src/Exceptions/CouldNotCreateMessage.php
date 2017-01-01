@@ -12,4 +12,19 @@ class CouldNotCreateMessage extends \Exception
     {
         return new static("Message over max length.");
     }
+
+    public static function invalidUrl()
+    {
+        return new static("Invalid URL.");
+    }
+
+    public static function unreadableFile()
+    {
+        return new static("Unreadable File.");
+    }
+
+    public static function invalidStickerId()
+    {
+        return new static("Invalid sticker id.");
+    }
 }
