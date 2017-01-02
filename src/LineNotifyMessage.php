@@ -86,6 +86,7 @@ class LineNotifyMessage
             throw CouldNotCreateMessage::invalidUrl();
         }
         $this->imageThumbnail = $url;
+        return $this;
     }
 
     /**
@@ -98,6 +99,7 @@ class LineNotifyMessage
             throw CouldNotCreateMessage::invalidUrl();
         }
         $this->imageFullsize = $url;
+        return $this;
     }
 
     /**
@@ -110,6 +112,7 @@ class LineNotifyMessage
             throw CouldNotCreateMessage::unreadableFile();
         }
         $this->imageFile = $filename;
+        return $this;
     }
 
     /**
