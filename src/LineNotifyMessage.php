@@ -78,6 +78,7 @@ class LineNotifyMessage
 
     /**
      * @param $url
+     * @return $this
      * @throws CouldNotCreateMessage
      */
     public function imageThumbnail($url)
@@ -91,6 +92,7 @@ class LineNotifyMessage
 
     /**
      * @param $url
+     * @return $this
      * @throws CouldNotCreateMessage
      */
     public function imageFullsize($url)
@@ -104,6 +106,7 @@ class LineNotifyMessage
 
     /**
      * @param $filename
+     * @return $this
      * @throws CouldNotCreateMessage
      */
     public function imageFile($filename)
