@@ -1,7 +1,7 @@
 <?php
 namespace NotificationChannels\LineNotify;
 
-use NotificationChannels\LineNotify\Exceptions\CouldNotCreateMessage;
+use NotificationChannels\LineNotify\Exceptions\CouldNotSendNotification;
 
 class LineNotifyMessage
 {
@@ -62,14 +62,14 @@ class LineNotifyMessage
      *
      * @param $text
      *
-     * @throws CouldNotCreateMessage
+     * @throws CouldNotSendNotification
      *
      * @return $this
      */
     public function text($text)
     {
         if (mb_strlen($text) > 1000) {
-            throw CouldNotCreateMessage::textTooLong();
+            throw CouldNotSendNotification::textTooLong();
         }
         $this->text = $text;
         $this->hasText = true;
@@ -79,12 +79,12 @@ class LineNotifyMessage
     /**
      * @param $url
      * @return $this
-     * @throws CouldNotCreateMessage
+     * @throws CouldNotSendNotification
      */
     public function imageThumbnail($url)
     {
         if (!filter_var($url, FILTER_VALIDATE_URL)) {
-            throw CouldNotCreateMessage::invalidUrl();
+            throw CouldNotSendNotification::invalidUrl();
         }
         $this->imageThumbnail = $url;
         return $this;
@@ -93,12 +93,12 @@ class LineNotifyMessage
     /**
      * @param $url
      * @return $this
-     * @throws CouldNotCreateMessage
+     * @throws CouldNotSendNotification
      */
     public function imageFullsize($url)
     {
         if (!filter_var($url, FILTER_VALIDATE_URL)) {
-            throw CouldNotCreateMessage::invalidUrl();
+            throw CouldNotSendNotification::invalidUrl();
         }
         $this->imageFullsize = $url;
         return $this;
@@ -107,12 +107,12 @@ class LineNotifyMessage
     /**
      * @param $filename
      * @return $this
-     * @throws CouldNotCreateMessage
+     * @throws CouldNotSendNotification
      */
     public function imageFile($filename)
     {
         if (!is_file($filename) || !is_readable($filename)) {
-            throw CouldNotCreateMessage::unreadableFile();
+            throw CouldNotSendNotification::unreadableFile();
         }
         $this->imageFile = $filename;
         return $this;
@@ -125,12 +125,12 @@ class LineNotifyMessage
      * @param $package_id
      * @param $id
      * @return $this
-     * @throws CouldNotCreateMessage
+     * @throws CouldNotSendNotification
      */
     public function sticker($package_id, $id)
     {
         if (!is_int($package_id) || !is_int($id)) {
-            throw CouldNotCreateMessage::invalidStickerId();
+            throw CouldNotSendNotification::invalidStickerId();
         }
         $this->sticker_package_id = $package_id;
         $this->sticker_id = $id;
